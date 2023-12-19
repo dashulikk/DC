@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified">
+
+    <xs:element name="disk">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="folder" type="Folder" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="Folder">
+        <xs:sequence>
+            <xs:element name="file" type="File" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:integer" use="required"/>
+        <xs:attribute name="name" type="xs:string" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="File">
+        <xs:attribute name="id" type="xs:integer" use="required"/>
+        <xs:attribute name="folderID" type="xs:integer" use="required"/>
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="visible" type="xs:boolean" use="required"/>
+        <xs:attribute name="readable" type="xs:boolean" use="required"/>
+        <xs:attribute name="writeable" type="xs:boolean" use="required"/>
+        <xs:attribute name="size" type="xs:integer" use="required"/>
+        <xs:attribute name="lastUpdated" type="xs:dateTime" use="required"/>
+    </xs:complexType>
+
+</xs:schema>
